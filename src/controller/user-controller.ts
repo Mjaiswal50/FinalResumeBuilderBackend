@@ -346,7 +346,7 @@ export class UserController {
                       <p>Thanks,<br>From the Whole Team here.</p>
     </body>
 </head>`;
-        Nodemailer.sendEmail('jaiswalmayank450@gmail.com', email , 'Password Reset Email', html).then(
+        Nodemailer.sendEmail('xyz@gmail.com', email , 'Password Reset Email', html).then(
          () => {
                 User.findOneAndUpdate({ email: email }, { code: otptoken }, { new: true }).then((user) => {
                if (user) {
