@@ -6,4 +6,8 @@ step 3.Change email xyz@gmail.com to yours
   src\controller\user-controller.ts line no. 289 349
 step 4.Add api key from sendgrid
   src\nodemailer.ts line no.17
-step 5.Npm Install on terminal
+step 5.Change database url of mongodb
+  src\environments\environment.prod.ts line no. 6
+  src\environments\environment.dev.ts line no. 6
+step 6.Npm Install on terminal
+
