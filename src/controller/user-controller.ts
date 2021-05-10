@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 import * as jwt from "jsonwebtoken";
 import * as moment from "moment";
 import {Request, Response} from "express";
-import {EmailVerificationHtml, Nodemailer, PasswordResetHtml} from "../nodemailer";
+import { Nodemailer, PasswordResetHtml} from "../nodemailer";
 import { getMaxListeners } from "process";
 
 var randomstring = require("randomstring");
@@ -70,13 +70,8 @@ export class UserController {
                                 });
                                 user
                                     .save()
-                                    .then(data => {
-                                        const uri = (data as any).code;
-                                        const html = EmailVerificationHtml(uri);
-                                        return Nodemailer.sendEmail('jaiswalmayank450@gmail.com', req.body.email,
-                                            'email verification', html).then(() => {
-                                            return res.status(201).send(data)
-                                        })
+                                    .then((data) => {
+                                    return res.status(201).send(data)
                                     })
                                     .catch(err => {
                                         return res.status(500).send(err)
@@ -162,32 +157,6 @@ export class UserController {
         })
     }
 
-
-    static sendEmailVerification(req: Request, res: Response) {
-        const code : any = req.query.code;
-        const email = req.query.email;
-        if (!code) {
-            res.status(500).json({
-                message: 'Please send a valid code',
-                status_code: 500
-            })
-        }
-        if (!email) {
-            res.status(500).json({
-                message: 'Please send a email',
-                status_code: 500
-            })
-        } else {
-            const html = EmailVerificationHtml(code);
-            return Nodemailer.sendEmail('jaiswalmayank450@gmail.com', email, 'email verification', html)
-                .then((data) => {
-                    return res.status(201).send(data)
-                }).catch(err => {
-                    return res.status(500).send(err)
-                });
-
-        }
-    }
 
     static updatePassword(req: Request, res: Response) {
         const oldPassword = req.body.old_password;
@@ -368,7 +337,15 @@ export class UserController {
     static codeSetOnMail(req: Request, res: Response){
         const email = req.body.mail;
         const otptoken = Nodemailer.otpgenerator();
-        let html = `${otptoken}`;
+     // let html = `${otptoken}`;
+        let html = `<title>Accept Mail</title>
+        <head>
+        <body>
+                      <h1>VERIFY YOUR MAILID</h1>
+                       <h3>${otptoken}</h3>
+                      <p>Thanks,<br>From the Whole Team here.</p>
+    </body>
+</head>`;
         Nodemailer.sendEmail('jaiswalmayank450@gmail.com', email , 'Password Reset Email', html).then(
          () => {
                 User.findOneAndUpdate({ email: email }, { code: otptoken }, { new: true }).then((user) => {

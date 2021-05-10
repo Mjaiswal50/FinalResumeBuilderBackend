@@ -15,7 +15,6 @@ class UserRouter {
         this.router.get('/initialize',UserController.InitializeApp);//d3
         this.router.get('/verify/:code',UserController.verify);
         this.router.get('/fetch',auth,UserController.getUserDetails);
-        this.router.get('/send/emailverification',UserController.sendEmailVerification);//d5
         this.router.patch('/update/profile',auth,UserController.updateProfile);
         this.router.patch('/update/name',auth,UserController.updateName);
         this.router.patch('/update/password',auth,UserController.updatePassword);
