@@ -24,7 +24,7 @@ class ContactUsRouter {
 <h2>Full name :  ${req.body.name}</h2>
 <h2>email :  ${req.body.email}</h2>
 <h2>message :  ${req.body.message}</h2>`;
-            Nodemailer.sendEmail('jaiswalmayank450@gmail.com', 'jaiswalmayank450@gmail.com'
+            Nodemailer.sendEmail('xyz@gmail.com', 'xyz@gmail.com'
                 , 'recieved new query', html).then(()=>{
                     res.status(200).json({
                         message:'Email sent Successfully'
