@@ -286,7 +286,7 @@ export class UserController {
             User.findOne({email: email}).then((data) => {
                 let code = (data as any).code;
                 const html = PasswordResetHtml(code);
-                Nodemailer.sendEmail('jaiswalmayank450@gmail.com', email, 'Password Reset Email', html).then(() => {
+                Nodemailer.sendEmail('xyz@gmail.com', email, 'Password Reset Email', html).then(() => {
                     res.status(200).json({
                         message: 'A password email has been sent to you',
                         status_code: 200
