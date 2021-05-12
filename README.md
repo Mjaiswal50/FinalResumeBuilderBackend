@@ -21,8 +21,9 @@ step 11.Change path of image storage in src\routers\resume-router.ts line no. 10
    replace cb(null, './src/uploads')
    with
    cb(null, './build/uploads')
-step 11.Follow heroku site
-step 8.Whatever url pops up on terminal use it as baseUrl in frontend in \src\app\services\http-service.ts
+step 12.Follow heroku site
+step 13.Whatever url pops up on terminal use it as baseUrl in frontend in \src\app\services\http-service.ts
   replace private baseURl = 'http://localhost:5000/api';
   with
   private baseURl='https://xyz.herokuapp.com/api';
+step 14. IF RUNNING BACKEND ON LOCAL SERVER USE NORMAL START SCRIPT ALSO CHANGE PATH OF PATH OF IMAGE STORAGE TO SRC FROM BUILD.
