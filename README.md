@@ -22,7 +22,7 @@ step 11.Change path of image storage in src\routers\resume-router.ts line no. 10
    with
    cb(null, './build/uploads')
     Also check if uploadimage folder not included then copy paste it in build folder.
-step 12.Replace in backend in build\controller\resume-controller.js in line no. 474
+step 12.Replace in backend in build\controller\resume-controller.js in line no. 448
    const path = image_name ? 'http://localhost:5000/' + 'build/uploads/' + image_name : null;
    with
    const path = image_name ? 'https://xyz.herokuapp.com/' + 'build/uploads/' + image_name : null;
