@@ -22,10 +22,12 @@ step 11.Change path of image storage in src\routers\resume-router.ts line no. 10
    with
    cb(null, './build/uploads')
     Also check if uploadimage folder not included then copy paste it in build folder.
-step 12.Follow heroku site
-step 13.Whatever url pops up on terminal use it as baseUrl in frontend in \src\app\services\http-service.ts
+step 12.Replace in backend in build\controller\resume-controller.js in line no. 474
+   const path = image_name ? 'http://localhost:5000/' + 'build/uploads/' + image_name : null;
+   with
+   const path = image_name ? 'https://xyz.herokuapp.com/' + 'build/uploads/' + image_name : null;
+step 13.Follow heroku site and restart all dynos from actions
+step 14.Whatever url pops up on terminal use it as baseUrl in frontend in \src\app\services\http-service.ts
   replace private baseURl = 'http://localhost:5000/api';
   with
   private baseURl='https://xyz.herokuapp.com/api';
-step 14. IF RUNNING BACKEND ON LOCAL SERVER USE NORMAL START SCRIPT ALSO CHANGE PATH OF PATH OF IMAGE STORAGE TO SRC FROM BUILD.
-step 15.
