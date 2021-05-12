@@ -17,7 +17,7 @@ step 7.Delete yarn.lock file
 step 8.Add script in package.json "create-bundle":"tsc && node build/index.js" and run command => npm run create-bundle
 step 9.Replace script "start":"node build/index.js"
 step 10:Delete .git if any before uploading
-step 11.Change path of image storage in src\routers\resume-router.ts line no. 10 
+step 11.Change path of image storage in build\routers\resume-router.js line no. 10 
    replace cb(null, './src/uploads')
    with
    cb(null, './build/uploads')
@@ -27,7 +27,9 @@ step 12.Replace in backend in build\controller\resume-controller.js in line no. 
    with
    const path = image_name ? 'https://xyz.herokuapp.com/' + 'build/uploads/' + image_name : null;
 step 13.Follow heroku site and restart all dynos from actions
-step 14.Whatever url pops up on terminal use it as baseUrl in frontend in \src\app\services\http-service.ts
+step 14.Whatever url pops up on terminal use it as baseUrl in frontend in \src\app\services\http-service.ts in line no. 13
   replace private baseURl = 'http://localhost:5000/api';
   with
   private baseURl='https://xyz.herokuapp.com/api';
+  
+Here we considered frontend in local server 4200
