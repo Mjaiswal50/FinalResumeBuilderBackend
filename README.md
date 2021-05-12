@@ -26,6 +26,9 @@ step 12.Replace in backend in build\controller\resume-controller.js in line no. 
    const path = image_name ? 'http://localhost:5000/' + 'build/uploads/' + image_name : null;
    with
    const path = image_name ? 'https://xyz.herokuapp.com/' + 'build/uploads/' + image_name : null;
+   or can use default method as given below
+       const image_url = (req.file).path;
+       const path = image_url ? 'https://xyz.herokuapp.com/' + image_url : null;
 step 13.Follow heroku site and restart all dynos from actions
 step 14.Whatever url pops up on terminal use it as baseUrl in frontend in \src\app\services\http-service.ts in line no. 13
   replace private baseURl = 'http://localhost:5000/api';
