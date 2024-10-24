@@ -337,6 +337,14 @@ export class UserController {
     static codeSetOnMail(req: Request, res: Response){
         const email = req.body.mail;
         const otptoken = Nodemailer.otpgenerator();
+        User.findOneAndUpdate({ email: email }, { code: otptoken }, { new: true }).then((user:any)=>{
+            if (res) {
+                res.json({ done: true, otp: otptoken });
+            } else {
+                res.send('user not exist');
+            }
+        })
+        return ;
      // let html = `${otptoken}`;
         let html = `<title>Accept Mail</title>
         <head>
